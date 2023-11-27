@@ -19,9 +19,9 @@ pub fn add_two_numbers(
 ) -> Option<Box<ListNode>> {
     let mut l1 = l1;
     let mut l2 = l2;
+    let mut dummy_head: Option<Box<ListNode>> = Some(Box::new(ListNode::new(0)));
+    let mut tail = &mut dummy_head;
     let mut carry = 0;
-    let mut head = Some(Box::new(ListNode::new(0)));
-    let mut current = &mut head;
 
     while l1.is_some() || l2.is_some() {
         let mut sum = carry;
@@ -34,17 +34,19 @@ pub fn add_two_numbers(
             l2 = node.next;
         }
         carry = sum / 10;
-        if let Some(node) = current {
+
+        if let Some(node) = tail {
             node.next = Some(Box::new(ListNode::new(sum % 10)));
-            current = &mut node.next;
+            tail = &mut node.next;
         }
     }
+
     if carry > 0 {
-        if let Some(node) = current {
+        if let Some(node) = tail {
             node.next = Some(Box::new(ListNode::new(carry)));
         }
     }
-    head.unwrap().next
+    dummy_head.unwrap().next
 }
 
 #[cfg(test)]

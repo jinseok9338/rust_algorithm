@@ -31,13 +31,13 @@ mod tests {
     use super::*;
     // Should return 'I' when given 1 as input
     #[test]
-    fn test_return_I_when_given_1() {
+    fn test_return_i_when_given_1() {
         assert_eq!(int_to_roman(1), "I");
     }
 
     // Should return 'IV' when given 4 as input
     #[test]
-    fn test_return_IV_when_given_4() {
+    fn test_return_iv_when_given_4() {
         assert_eq!(int_to_roman(4), "IV");
     }
 
@@ -49,7 +49,7 @@ mod tests {
 
     // Should return 'IX' when given 9 as input
     #[test]
-    fn test_return_IX_when_given_9() {
+    fn test_return_ix_when_given_9() {
         assert_eq!(int_to_roman(9), "IX");
     }
 }
